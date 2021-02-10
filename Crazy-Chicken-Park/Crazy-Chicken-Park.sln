@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Crazy-Chicken-Park", ".", "{74FE34D6-C899-4B70-9007-1290FC4C491C}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_50340"
+		Debug.AspNetCompiler.PhysicalPath = "..\Crazy-Chicken-Park\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50340\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_50340"
+		Release.AspNetCompiler.PhysicalPath = "..\Crazy-Chicken-Park\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50340\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "50340"
+		SlnRelativePath = "..\Crazy-Chicken-Park\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74FE34D6-C899-4B70-9007-1290FC4C491C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74FE34D6-C899-4B70-9007-1290FC4C491C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A803F9F-7302-4EE1-AA54-E6577FFA2CFF}
+	EndGlobalSection
+EndGlobal
