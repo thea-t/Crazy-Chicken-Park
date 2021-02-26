@@ -60,8 +60,9 @@ class Ball {
 			}
 
 		}
-
 		if (this.ballObject.position.y < - 3) {
+
+		//check how many balls are active in the scene
 			if (allBalls.length == 1) {
 				restartGame();
 			}
@@ -69,6 +70,7 @@ class Ball {
 				//removing items from arrays: https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array
 				//https://www.w3schools.com/jsref/jsref_splice.asp
 				const index = allBalls.indexOf(this);
+
 				if (index > -1) {
 					allBalls.splice(index, 1);
 				}
