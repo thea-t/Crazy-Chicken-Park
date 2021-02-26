@@ -29,7 +29,6 @@ class Brick {
 	onHit() {
 		if (this.lives <= 1) {
 			scene.remove(this.brickObj);
-			//if less than 50% chance
 			if (Math.random() < powerUpDropChance / 100) {
 				spawnRandomPowerUp(this.positionX, this.positionY); 
             }
