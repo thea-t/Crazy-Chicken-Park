@@ -8,18 +8,24 @@ class PowerUp{
     constructor(){
 		//create geometry and material
 		var geometry = new THREE.BoxGeometry();
-		var material = new THREE.MeshBasicMaterial({
-			//change color of material: https://threejsfundamentals.org/threejs/lessons/threejs-materials.html
-			color: 0x00ff00
-		});
+		this.material = new THREE.MeshBasicMaterial;
+		//change color of material: https://threejsfundamentals.org/threejs/lessons/threejs-materials.html
+
+
 		//create a mesh and giving it the geometry and material that was just created
-		this.powerUpObject = new THREE.Mesh(geometry, material);
+		this.powerUpObject = new THREE.Mesh(geometry, this.material);
 
 		//how to scale an object: https://threejs.org/docs/#api/en/core/Object3D.scale
 		this.powerUpObject.scale.x = 0.1;
 		this.powerUpObject.scale.y = 0.1;
 		this.powerUpObject.scale.z = 0.1;
+
+		this.onDropped();
 	}
+
+	onDropped() {
+
+    }
 
     onCollected() {
 		// TODO play audio
@@ -75,27 +81,27 @@ function spawnRandomPowerUp(posX, posY) {
 	//check the number of the powerup and spawn it.
 	if (randomPowerUpIndex == 0) {
 		newPowerUp = new FireballPowerUp();
-		console.log("Fireball collected!");
+		console.log("Fireball dropped!");
 	}
 	else if (randomPowerUpIndex == 1) {
 		newPowerUp = new SplitballPowerUp();
-		console.log("Splitball collected!");
+		console.log("Splitball dropped!");
 	}
 	else if (randomPowerUpIndex == 2) {
 		newPowerUp = new SlowballPowerUp();
-		console.log("Slowball collected!");
+		console.log("Slowball dropped!");
 	}
 	else if (randomPowerUpIndex == 3) {
 		newPowerUp = new FastballPowerUp();
-		console.log("Fastball collected!");
+		console.log("Fastball dropped!");
 	}
 	else if (randomPowerUpIndex == 4) {
 		newPowerUp = new SmallPaddlePowerUp();
-		console.log("Small paddle collected!");
+		console.log("Small paddle dropped!");
 	}
 	else if (randomPowerUpIndex == 5) {
 		newPowerUp = new BigPaddlePowerUp();
-		console.log("Big paddle collected!");
+		console.log("Big paddle dropped!");
 	}
 
 	scene.add(newPowerUp.powerUpObject);

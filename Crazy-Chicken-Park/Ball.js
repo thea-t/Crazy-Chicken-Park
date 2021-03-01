@@ -6,7 +6,7 @@ class Ball {
 		var geometry = new THREE.SphereGeometry();
 		var material = new THREE.MeshBasicMaterial({
 			//change color of material: https://threejsfundamentals.org/threejs/lessons/threejs-materials.html
-			color: 0x808080
+			color: 0xf8e54e
 		});
 		//create a mesh and giving it the geometry and material that was just created
 		this.ballObject = new THREE.Mesh(geometry, material);
@@ -23,8 +23,12 @@ class Ball {
 
 	//move the ball  https://threejs.org/editor/
 	movement() {
-		if (this.ballObject.position.x < - 2.5 || this.ballObject.position.x > 2.5) this.direction.x = - this.direction.x;
-		if (this.ballObject.position.y > 2.5) this.direction.y = - this.direction.y;
+		if (this.ballObject.position.x < - 2.5 || this.ballObject.position.x > 2.5) {
+			this.direction.x = - this.direction.x;
+		}
+		if (this.ballObject.position.y > 2.5) {
+			this.direction.y = - this.direction.y;
+		}
 		this.ballObject.translateX(this.direction.x * ballSpeed);
 		this.ballObject.translateY(this.direction.y * ballSpeed);
 
@@ -37,11 +41,11 @@ class Ball {
 
 			var intersection = intersections[0];
 
-			if (intersection.distance < 0.2) {
+			if (intersection.distance < 0.15) {
 
 				if (intersection.object !== paddleObject) {
 					for (var i = 0; i < allBricks.length; i++) {
-						if (intersection.object == allBricks[i].brickObj) {
+						if (intersection.object == allBricks[i].brickObj && allBricks[i].alreadyDestroyed == false) {
 							allBricks[i].onHit();
 
 							// if the fireball powerup is disabled, reflect
@@ -63,15 +67,16 @@ class Ball {
 
 		if (this.ballObject.position.y < - 3) {
 			if (allBalls.length == 1) {
-				restartGame();
+
+				this.ballObject.position.x = 0;
+				this.ballObject.position.y = 0;
+				onLifeLost();
 			}
 			else {
 				//removing items from arrays: https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array
 				//https://www.w3schools.com/jsref/jsref_splice.asp
 				const index = allBalls.indexOf(this);
-				if (index > -1) {
-					allBalls.splice(index, 1);
-				}
+				allBalls.splice(index, 1);
 				scene.remove(this.ballObject);
             }
 		}

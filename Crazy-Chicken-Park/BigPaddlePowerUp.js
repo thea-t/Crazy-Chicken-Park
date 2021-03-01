@@ -2,6 +2,9 @@
 
 class BigPaddlePowerUp extends PowerUp {
     //how to override functions: https://javascript.info/class-inheritance
+    onDropped() {
+        this.material.color.set(0x58a6ff);
+    }
     onCollected() {
         super.onCollected();
 

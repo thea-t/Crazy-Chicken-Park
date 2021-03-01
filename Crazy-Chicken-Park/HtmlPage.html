@@ -7,13 +7,36 @@
         body {
             margin: 0;
         }
+        #livesText {
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            text-align: center;
+            z-index: 100;
+            display: block;
+            color: white;
+            right: 200px;
+        }
+        #scoreText {
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            text-align: center;
+            z-index: 100;
+            display: block;
+            color: white;
+            left: 200px;
+        }
     </style>
 </head>
 <body>
+    <p id="livesText"></p>
+    <p id="scoreText"></p>
     <script src="three.js"></script>
     <script src="Ball.js"></script>
     <script src="Paddle.js"></script>
     <script src="PowerUp.js"></script>
+    <script src="ScoreManager.js"></script>
     <script src="GameManager.js"></script>
     <script src="Brick.js"></script>
     <script src="BrickManager.js"></script>
