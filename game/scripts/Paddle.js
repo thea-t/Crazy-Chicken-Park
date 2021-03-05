@@ -1,19 +1,23 @@
-﻿var paddleObject;
+﻿//storing the paddle object
+var paddleObject;
+
+// true while left or right buttons are pressed
 var paddleIsMovingRight = false;
 var paddleIsMovingLeft = false;
 
-//var speed = 0.02;
+
 class Paddle {
     constructor() {
-        //create geometry and material
+        //creating geometry and material
         var geometry = new THREE.BoxGeometry();
         var material = new THREE.MeshBasicMaterial({
-            //change color of material: https://threejsfundamentals.org/threejs/lessons/threejs-materials.html
+            //changing color of material: https://threejsfundamentals.org/threejs/lessons/threejs-materials.html
             color: 0xf8e54e
         });
-        //create a mesh and giving it the geometry and material that was just created
+        //creating a mesh and giving it the geometry and material that was just created
         paddleObject = new THREE.Mesh(geometry, material);
 
+        //scaling the paddle
         //how to scale an object: https://threejs.org/docs/#api/en/core/Object3D.scale
         paddleObject.scale.x = 1;
         paddleObject.scale.y = 0.2;
@@ -21,12 +25,15 @@ class Paddle {
 
         paddleObject.position.y = -2.5;
     }
+
     movement() {
+        //moves the paddle right 
         if (paddleIsMovingRight && paddleObject.position.x < 2.5) {
             paddleObject.translateX(0.03);
 
         }
-        if (paddleIsMovingLeft && paddleObject.position.x > - 2.5 ) {
+        //moves the paddle left
+        if (paddleIsMovingLeft && paddleObject.position.x > - 2.5) {
             paddleObject.translateX(-0.03);
         }
     }

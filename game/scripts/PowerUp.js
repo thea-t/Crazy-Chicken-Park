@@ -1,7 +1,8 @@
-﻿var allActivePowerUps = new Array();
-var totalPowerUpCount = 6;
+﻿//array storing all powerups that are active in order to be able to move them at the same time
+var allActivePowerUps = new Array();
 
-//5 seconds
+//variables
+var totalPowerUpCount = 6;
 var powerUpDuration = 5000;
 
 class PowerUp{
@@ -9,10 +10,8 @@ class PowerUp{
 		//create geometry and material
 		var geometry = new THREE.BoxGeometry();
 		this.material = new THREE.MeshBasicMaterial;
-		//change color of material: https://threejsfundamentals.org/threejs/lessons/threejs-materials.html
 
-
-		//create a mesh and giving it the geometry and material that was just created
+		//creating a mesh and giving it the geometry and material that was just created
 		this.powerUpObject = new THREE.Mesh(geometry, this.material);
 
 		//how to scale an object: https://threejs.org/docs/#api/en/core/Object3D.scale
@@ -23,12 +22,13 @@ class PowerUp{
 		this.onDropped();
 	}
 
+	//this empty function is called when the powerup is dropped. other powerups can override this
 	onDropped() {
 
     }
 
-    onCollected() {
-		// TODO play audio
+	//this function is called when the powerup is collected. other powerups can also override this
+	onCollected() {
 
 		//removing items from arrays: https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array
 			//https://www.w3schools.com/jsref/jsref_splice.asp
@@ -40,18 +40,24 @@ class PowerUp{
 
 	}
 
+	//this function is called in update. it moves the powerUp down
 	movement() {
+		//if the powerUp goes out of the screen
 		if (this.powerUpObject.position.y < -3) {
+			//removeing the powerup from allActivePowerUps array
 			//removing items from arrays: https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array
 			//https://www.w3schools.com/jsref/jsref_splice.asp
 			const index = allActivePowerUps.indexOf(this);
 				allActivePowerUps.splice(index, 1);
-		
+
+			//removes the powerup from the scene
 			scene.remove(this.powerUpObject);
 		}
-		//move the powerup downwards
+		//moves the powerup downwards
 		this.powerUpObject.translateY(-0.01);
 
+
+		//raycasting and checking if the powerup intersects with the paddle
 		//raycast: https://threejs.org/docs/#api/en/core/Raycaster
 		raycaster.set(this.powerUpObject.position, new THREE.Vector3(0, -1, 0));
 
@@ -62,7 +68,8 @@ class PowerUp{
 			var intersection = intersections[0];
 
 			if (intersection.distance < 0.1) {
-				//call the onCollected function when power up intersects with the paddle
+
+				//calls the onCollected function when power up intersects with the paddle
 				if (intersection.object == paddleObject) {
 					this.onCollected();
 				}
@@ -72,13 +79,15 @@ class PowerUp{
     }
 }
 
+
 function spawnRandomPowerUp(posX, posY) {
 	//get a random number between 0 and the total powerup count.
 	var randomPowerUpIndex = Math.floor(Math.random() * totalPowerUpCount) + 0;
 
+	//create an empty variable
 	var newPowerUp;
 
-	//check the number of the powerup and spawn it.
+	//check powerup index and spawn it
 	if (randomPowerUpIndex == 0) {
 		newPowerUp = new FireballPowerUp();
 		console.log("Fireball dropped!");
@@ -104,7 +113,10 @@ function spawnRandomPowerUp(posX, posY) {
 		console.log("Big paddle dropped!");
 	}
 
+	//add the new powerup to the scene
 	scene.add(newPowerUp.powerUpObject);
+
+	//set the powerups position to the bricks position
 	newPowerUp.powerUpObject.position.x = posX;
 	newPowerUp.powerUpObject.position.y = posY;
 
