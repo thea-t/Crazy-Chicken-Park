@@ -9,10 +9,10 @@ class SmallPaddlePowerUp extends PowerUp {
         this.material.color.set(0xcccfd3);
     }
     onCollected() {
-                //calls the onCollected function from PowerUp class
+        //calls the onCollected function from PowerUp class
         super.onCollected();
 
-                //checks if the ball is already small, if not - its decreasing its size twice less for 5 seconds
+        //checks if the ball is already small, if not - its decreasing its size twice less for 5 seconds
         if (isAlreadySmall == false) {
             paddleObject.scale.x = paddleObject.scale.x / 2;
             isAlreadySmall = true;
